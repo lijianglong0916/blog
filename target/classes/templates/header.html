@@ -1,0 +1,188 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <script src="jquery-3.4.1/jquery-3.4.1.js"></script>
+    <link rel="stylesheet" th:href="@{css/bootstrap.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{css/bootstrap-theme.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{css/community.css}" type="text/css">
+    <script src="js/bootstrap.js" type="application/javascript"></script>
+    <script src="js/commmentJs.js"></script>
+    <header th:fragment="common_head">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header header-nav">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">码酱论坛</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">码酱论坛</a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <form id="messageForm" class="navbar-form navbar-left" action="inputSearch" method="post">
+                        <div class="form-group header-div-search">
+                            <input type="text" id="searchQuestion" name="searchQuestion" class="form-control"
+                                   placeholder="输入查找信息">
+                        </div>
+                        <button type="button" class="btn btn-default" onclick="inputSearch()">搜索</button>
+                        <div class="form-group header-div-search">
+                            <input type="text" id="errorMsg" name="errorMsg" class="header-err-msg">
+                        </div>
+                    </form>
+                    <div>
+                    </div>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="publish" methods="get">发布</a></li>
+                        <!--登陆成功-->
+                        <li class="dropdown" th:if="${session.userName!=null}">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true"
+                               aria-expanded="false" th:text="${session.userName}"> <span
+                                    class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="personal">个人中心</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="destroy">退出登录</a></li>
+                            </ul>
+                        </li>
+                        <!--还未登录-->
+                        <li th:unless="${session.userName!=null}">
+                            <a class="log1" cursor="pointer">登录</a>
+
+                            <div class="modal fade" id="myModal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h4 class="modal-title" align="center">用户登录</h4>
+                                            <br/>
+                                            <form class="form-horizontal" action="login" role="form" method="post">
+                                                <div class="form-group">
+                                                    <label for="accountId"
+                                                           class="col-sm-offset-2 col-sm-2 control-label">账号</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="text" class="form-control" name="accountId"
+                                                               id="accountId" placeholder="请输您的入账号">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="password"
+                                                           class="col-sm-offset-2 col-sm-2 control-label">密码</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="password" class="form-control" name="password"
+                                                               id="password" placeholder="请输入您的密码">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-sm-offset-4 col-sm-5">
+                                                        <button id="submitBtn" type="submit"
+                                                                class="btn btn-default btn-block btn-primary">登录
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
+
+                            <script type="text/javascript">
+                                $(function () {
+
+                                    $(".log1").click(function () {
+                                        $('#myModal').modal('show') //显示模态框
+                                    })
+
+                                });
+
+                            </script>
+                        </li>
+                        <li th:unless="${session.userName!=null}">
+                            <a class="register header-register">注册</a>
+
+                            <div class="modal fade" id="registerModal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h4 class="modal-title " align="center">用户注册</h4>
+                                            <br/>
+                                            <form class="form-horizontal" id="registerForm" action="userRegister"
+                                                  method="post">
+                                                <div class="form-group">
+                                                    <label for="registerAccount"
+                                                           class="col-sm-offset-2 col-sm-2 control-label">账号</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="text" class="form-control" name="registerAccount"
+                                                               id="registerAccount" placeholder="请输您的入账号">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="registerName"
+                                                           class="col-sm-offset-2 col-sm-2 control-label">昵称</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="text" class="form-control" name="registerName"
+                                                               id="registerName" placeholder="请输您的入昵称">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="registerPassword"
+                                                           class="col-sm-offset-2 col-sm-2 control-label">密码</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="password" class="form-control"
+                                                               name="registerPassword"
+                                                               id="registerPassword" placeholder="请输入您的密码">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-sm-offset-4 col-sm-5">
+                                                        <button class="btn btn-default btn-block btn-primary"
+                                                                type="button" onclick="registerSubmit()">确认注册
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
+
+                            <script type="text/javascript">
+                                $(function () {
+
+                                    $(".register").click(function () {
+                                        $('#registerModal').modal('show') //显示模态框
+                                    })
+
+                                });
+
+                            </script>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+</head>
+<body>
+
+
+</body>
+</html>

@@ -1,0 +1,278 @@
+body {
+    background-color: #E3E3E5;
+    font-family: \4EFF\5B8B;
+}
+
+a {
+    cursor: pointer;
+}
+
+input {
+    autocomplete: off;
+}
+
+textarea {
+    resize: none;
+}
+
+
+button :focus {
+    background-color: #e0e0e0;
+    background-position: 0 -15px;
+}
+
+.h4-title {
+    font-size: 30px;
+}
+
+.header-register {
+    background-color: lightblue;
+}
+
+/**
+    person页面颜色
+ */
+.person-body {
+    background-color: #fffffc;
+    margin-left: 213px;
+}
+
+.main {
+    margin: 30px;
+}
+
+.header-nav {
+    margin-left: 30px;
+}
+
+.btn-publish {
+    margin-top: 20px;
+    float: right;
+    margin-bottom: 15px;
+}
+
+.divider-li {
+    weight: 100px;
+    height: 26px;
+}
+
+
+.index-p-errLog {
+    color: red;
+    background-color: yellow;
+    width: 300px;
+    margin-left: 400px;
+    text-align: center;
+}
+
+/**
+ *头像在header和信息展示时
+ */
+.header-pic {
+    height: 40px;
+    width: 40px;
+}
+
+.header-err-msg {
+    display: none;
+    font-size: 20px;
+    readonly: true;
+    color: red;
+    border-color: transparent;
+
+}
+
+/**
+ *头像在个人主页的样式
+ */
+.person-header-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: -17px auto 0;
+    margin-left: 90px;
+    background-color: blueviolet;
+}
+
+/**
+  个人主页修改头像按钮样式
+ */
+.person-pic {
+    font-size: 15px;
+    color: #4d4d4d;
+    padding-left: 10px;
+    padding-top: 16px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.commit-pic-button {
+    margin-top: 250px;
+}
+
+/**
+  个人主页修改资料按钮样式
+ */
+.person-data-change {
+    font-size: 15px;
+    color: #4d4d4d;
+    padding-left: 500px;
+    padding-top: 16px;
+    margin-right: 50px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.person-div-main {
+    margin-top: 25px;
+    margin-left: 50px;
+    background-color: #E3E3E5;
+}
+
+.person-button-update {
+    width: 100px;
+    height: 34px;
+    color: #fff;
+    letter-spacing: 1px;
+    background: #3385ff;
+    margin-left: 400px;
+    display: none;
+}
+
+.person-button-file {
+    opacity: 0;
+    margin-top: -8px;
+}
+
+.person-button-load {
+    margin-left: 0px;
+    margin-top: 10px;
+    width: 60px;
+    height: 30px;
+    color: #fff;
+    letter-spacing: 1px;
+    background: cadetblue;
+    display: none;
+}
+
+.person-media {
+    padding-left: 25px;
+}
+
+.person-div-que {
+    margin-top: 50px;
+    margin-left: 120px;
+    background: white;
+}
+
+.span-tags {
+    font-size: 12px;
+    font-weight: normal;
+    color: #999;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.index-div-hot-que {
+    margin-left: 50px;
+    background-color: #E3E3E5;
+
+}
+
+.index-div-que {
+    margin-left: 120px;
+    background: white;
+}
+
+.index-div-body {
+    padding-left: 30px;
+}
+
+.index-ul-page {
+    padding-left: 60px;
+}
+
+.header-div-search {
+    margin-left: 32px;
+}
+
+.one-line {
+    width: 700px;
+    height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.log-color {
+    color: #999;
+    font-size: 13px;
+    margin-top: 15px;
+    margin-right: 15px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.log-color:hover {
+    color: #3366ff;
+}
+
+.picture-text {
+    float: left;
+}
+
+.comment.style {
+    padding: 20px;
+}
+
+.comment-pic-name {
+    /*margin-top: 4px;*/
+    /*margin-bottom: 34px;*/
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: normal;
+    outline: 0;
+}
+
+.comment-pic-text {
+    margin-top: -30px;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.h3-font-size {
+    font-size: 19px;
+}
+
+.comment-second {
+    margin-left: 40px;
+}
+
+.question-detail-label-info {
+    font-size: 100%;
+    margin-right: 6px;
+}
+
+/**
+person中的input样式
+ */
+.person-input {
+    background-color: transparent;
+    border: 1px;
+
+}
+
+.person-input-change {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #555;
+}
+
+.person-p {
+    margin-bottom: 10px;
+    margin-left: 135px;
+    font-family: \4EFF\5B8B;
+    font-size: 20px;
+    readonly: true;
+}
