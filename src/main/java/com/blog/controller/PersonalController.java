@@ -64,11 +64,27 @@ public class PersonalController {
     }
 
     @GetMapping("personal")
-    public ModelAndView personal(HttpSession session) {
+    public ModelAndView personal(@RequestParam(name = "creatorName", defaultValue = "") String creatorName, HttpSession session) {
         ModelAndView view = new ModelAndView();
-        Long userAccount = (Long) session.getAttribute("userAccount");
+        Long userAccount = 0L;
+        boolean isCurrentPerson = false;
+        if (session.getAttribute("userAccount") != null) {
+            userAccount = (Long) session.getAttribute("userAccount");
+            if (creatorName.equals("") || userAccount.equals(userService.getUserByName(creatorName).getAccount_id())) {
+                isCurrentPerson = true;
+            } else {
+                isCurrentPerson = false;
+                userAccount = userService.getUserByName(creatorName).getAccount_id();
+            }
+
+        } else {
+            isCurrentPerson = false;
+            userAccount = userService.getUserByName(creatorName).getAccount_id();
+        }
+
         String headP = headPictureService.getHPByUserAccount(userAccount).getPicture_url();
         UserMessage userMessage = userMassageService.getUMByAccount(userAccount);
+        view.addObject("isCurrentPerson", isCurrentPerson);
         view.addObject("headP", headP);
         view.addObject("userMessage", userMessage);
         view.setViewName("personal");

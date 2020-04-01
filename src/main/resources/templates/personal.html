@@ -25,7 +25,7 @@
                     <img class="media-object person-header-pic" th:src="${headP}">
                 </form>
             </div>
-            <div class="media-body ">
+            <div class="media-body " th:if="${isCurrentPerson==true}">
                 <div style="float:left">
                     <div style="float:left" class="person-pic">
                         <div class="person-data-change">
@@ -114,9 +114,6 @@
                 </li>
                 <li class="list-group-item body-color">
                     <a href="myLike">我的点赞</a>
-                </li>
-                <li class="list-group-item body-color">
-                    <a>我的收藏</a>
                 </li>
             </ul>
         </div>

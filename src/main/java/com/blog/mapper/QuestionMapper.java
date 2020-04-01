@@ -44,7 +44,7 @@ public interface QuestionMapper {
      * @param question
      */
     @Insert("insert into question (id,title,description,gmt_create,gmt_modified,creatorId,comment_count,read_count,tag) values" +
-            "(#{id},#{title},#{description},#{gmt_create},#{gmt_modified},#{creatorId},#{comment_count},#{read_count},#{tag})")
+            "(#{id},#{title},#{description},#{gmt_create,jdbcType=TIMESTAMP},#{gmt_modified,jdbcType=TIMESTAMP},#{creatorId},#{comment_count},#{read_count},#{tag})")
     public void insertQue(Question question);
 
     /**

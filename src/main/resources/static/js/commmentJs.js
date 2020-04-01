@@ -141,13 +141,11 @@ function publishPost() {
         contentType: 'application/json',
         data: JSON.stringify({"title": title, "description": description, "tag": tag, "id": id}),
         success: function (response) {
-            if (response == "success") {
-                alert("发布成功！");
-                $("#tag").val('');
-                $("#description").val('');
-                $("#title").val('');
-                location.reload();
-            }
+            alert(response['msg']);
+            $("#tag").val('');
+            $("#description").val('');
+            $("#title").val('');
+            location.reload();
 
         }
     });
@@ -354,4 +352,46 @@ function inputSearch() {
     }
     $("#messageForm").action = "inputSearch";
     $("#messageForm").submit();
+}
+
+function missPass() {
+    $('#myModal').attr("style", "display:none");
+    $('#changePassModal').modal('show') //显示模态框
+
+}
+
+
+/**
+ * 注册用户
+ */
+function changePassSubmit() {
+    var account = $("#changePassAccount").val();
+    var name = $("#changePassName").val();
+    if (account == "") {
+        alert("用户账号不能为空！");
+        return;
+    }
+    if (!validate(account)) {
+        alert("账号只能是数字");
+        return;
+    }
+    if (name == "") {
+        alert("用户名不能为空！");
+        return;
+    }
+
+    $.ajax({
+
+        type: "POST",
+        url: "changePass",
+        contentType: 'application/json',
+        data: JSON.stringify({"account_id": account, "name": name}),
+        success: function (response) {
+            alert("密码为：" + response['msg']);
+            $('#changePassModal').attr("style", "display:none");
+            location.reload();
+        }
+
+    });
+
 }

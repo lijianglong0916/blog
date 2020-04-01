@@ -147,7 +147,7 @@
                 <h3>发起人</h3>
                 <div class="media">
                     <div class="media-left">
-                        <a href="#">
+                        <a th:href="@{personal(creatorName=${creatorName})}">
                             <img class="img-circle media-object header-pic " style="float:left"
                                  th:src="${creatorHeadP}">
                             <h4 style="float:left" th:text="${creatorName}"></h4>

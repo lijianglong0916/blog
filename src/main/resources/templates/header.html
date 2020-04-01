@@ -86,6 +86,8 @@
                                                         <button id="submitBtn" type="submit"
                                                                 class="btn btn-default btn-block btn-primary">登录
                                                         </button>
+                                                        <a id="changePass" onclick="missPass()"
+                                                           class="header-a-changePass">忘记密码</a>
                                                     </div>
                                                 </div>
                                             </form>
@@ -108,6 +110,8 @@
 
                             </script>
                         </li>
+
+                        <!--用户注册-->
                         <li th:unless="${session.userName!=null}">
                             <a class="register header-register">注册</a>
 
@@ -174,6 +178,56 @@
                                 });
 
                             </script>
+                        </li>
+
+
+                        <!--修改密码-->
+                        <li hidden="hidden">
+
+                            <div class="modal fade" id="changePassModal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h4 class="modal-title " align="center">找回密码</h4>
+                                            <br/>
+                                            <form class="form-horizontal" id="changePassForm" action="userRegister"
+                                                  method="post">
+                                                <div class="form-group">
+                                                    <label for="registerAccount"
+                                                           class="col-sm-offset-2 col-sm-2 control-label">账号</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="text" class="form-control" name="registerAccount"
+                                                               id="changePassAccount" placeholder="请输您的入账号">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="registerName"
+                                                           class="col-sm-offset-2 col-sm-2 control-label">昵称</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="text" class="form-control" name="registerName"
+                                                               id="changePassName" placeholder="请输您的入昵称">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-sm-offset-4 col-sm-5">
+                                                        <button class="btn btn-default btn-block btn-primary"
+                                                                type="button" onclick="changePassSubmit()">确认找回
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
+
                         </li>
                     </ul>
                 </div>
