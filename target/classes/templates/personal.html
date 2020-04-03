@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>种花家的兔子</title>
+    <script src="jquery-3.4.1/jquery-3.4.1.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.css">
+    <link rel="stylesheet" href="css/community.css">
+    <script src="js/bootstrap.js" type="application/javascript"></script>
+    <script src="js/commmentJs.js"></script>
+
+</head>
+<body>
+<div id="head" th:insert="header :: common_head"></div>
+<div class="container-fluid main ">
+    <div class="row">
+        <div class="col-lg-7 col-sm-12 col-md-12 col-xm-12 person-body">
+            <h2><span class="glyphicon glyphicon-list" aria-hidden="true"></span>个人资料</h2>
+            <hr>
+            <div class="media-left">
+                <form>
+                    <img class="media-object person-header-pic" th:src="${headP}">
+                </form>
+            </div>
+            <div class="media-body " th:if="${isCurrentPerson==true}">
+                <div style="float:left">
+                    <div style="float:left" class="person-pic">
+                        <div class="person-data-change">
+                            <a id="changeHP" onclick="changeHP()">修改头像</a>
+                        </div>
+                        <input type="file" name="fileName" id="filename" class="person-button-file" disabled
+                               accept="image/png, image/jpeg, image/jpg">
+                        <input type="submit" id="submitBtn" class="person-button-load" disabled onclick="picSubmit()"
+                               value="上传"/>
+                    </div>
+                    <hr>
+                </div>
+                <div style="float:right">
+                    <div class="person-data-change">
+                        <a onclick="changeMessage()">修改资料</a>
+                    </div>
+                </div>
+            </div>
+            <!--图片上传及个人信息列表-->
+            <form id="myForm" action="actorInfo_save" method="post">
+                <p class="col-md-10 person-p">
+                    <label for="user_name">昵称：</label>
+                    <input type="text" readonly="readonly" id="user_name" name="user_name" class="person-input"
+                           th:value="${userMessage.getUser_name()}">
+                </p>
+                <p class="col-md-10 person-p">
+                    <label for="user_true_name">姓名：</label>
+                    <input type="text" readonly="readonly" id="user_true_name" name="user_true_name"
+                           class="person-input" th:value="${userMessage.getUser_true_name()}">
+                </p>
+                <p class="col-md-10 person-p">
+                    <label for="sex">性别：</label>
+                    <input type="text" list="sexList" readonly="readonly" id="sex" name="sex" class="person-input"
+                           th:value="${userMessage.getSex()}">
+                    <datalist id="sexList">
+                        <option>男</option>
+                        <option>女</option>
+                    </datalist>
+                </p>
+                <p class="col-md-10 person-p">
+                    <label for="birthday">生日：</label>
+                    <input type="text" readonly="readonly" id="birthday" name="birthday" class="person-input"
+                           th:value="${#dates.format(userMessage.getBirthday(), 'yyyy-mm-dd')}">
+                </p>
+                <p class="col-md-10 person-p">
+                    <label for="position">职位：</label>
+                    <input type="text" readonly="readonly" id="position" name="position" class="person-input"
+                           th:value="${userMessage.getPosition()}">
+                </p>
+                <p class="col-md-10 person-p">
+                    <label for="company">公司：</label>
+                    <input type="text" readonly="readonly" id="company" name="company" class="person-input"
+                           th:value="${userMessage.getCompany()}">
+                </p>
+                <p class="col-md-10 person-p">
+                    <label for="education">学历：</label>
+                    <input type="text" readonly="readonly" id="education" name="education" class="person-input"
+                           th:value="${userMessage.getEducation()}">
+                </p>
+                <p class="col-md-10 person-p">
+                    <label for="school">学校：</label>
+                    <input type="text" readonly="readonly" id="school" name="school" class="person-input"
+                           th:value="${userMessage.getSchool()}">
+                </p>
+                <p class="col-md-10 person-p">
+                    <label for="industry">行业：</label>
+                    <input type="text" readonly="readonly" id="industry" name="industry" class="person-input"
+                           th:value="${userMessage.getIndustry()}">
+                </p>
+                <p class="col-md-10 person-p">
+                    <label for="introduction" style="vertical-align: top;">简介：</label>
+                    <textarea type="text" readonly="readonly" id="introduction" name="introduction" class="person-input"
+                              th:value="${userMessage.getIntroduction()}"></textarea>
+                </p>
+                <button id="updateUM" type="button" class="person-button-update" onclick="saveMessage()">确认更新</button>
+            </form>
+            <hr>
+        </div>
+
+
+        <div class="col-lg-3 col-sm-12 col-xm-12  ">
+            <h2>个人主页</h2>
+            <ul class="list-group body-color">
+                <li class="list-group-item body-color">
+                    <a href="myQuestion">我的提问</a>
+                </li>
+                <li class="list-group-item body-color">
+                    <a href="myLike">我的点赞</a>
+                </li>
+                <li class="list-group-item body-color">
+                    <a href="manage" >管理员</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>
