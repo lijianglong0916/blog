@@ -33,8 +33,8 @@ function replyPost() {
 /**
  * 删除回复
  */
-function deleteReply() {
-    var questionId = $("#questionId").val();
+function deleteReply(questionId) {
+    var questionId = questionId;
     $.ajax({
         type: "post",
         url: "deleteQuestion",
@@ -52,8 +52,8 @@ function deleteReply() {
 /**
  * 删除用户（root用户操作）
  */
-function deleteUser() {
-    var account_id = $("#account_id").val();
+function deleteUser(account_id) {
+    var account_id = account_id;
     $.ajax({
         type: "post",
         url: "deleteUser",

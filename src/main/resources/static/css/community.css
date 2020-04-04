@@ -38,7 +38,12 @@ button :focus {
  */
 .person-body {
     background-color: #fffffc;
-    margin-left: 213px;
+    margin-top: 1%;
+    margin-left: 15%;
+}
+
+.person-body-right {
+    background-color: #fffffc;
 }
 
 .main {

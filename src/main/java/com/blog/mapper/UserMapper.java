@@ -71,7 +71,7 @@ public interface UserMapper {
      * 获取所有用户信息，不包括root用户
      * @return
      */
-    @Select("select * from user where account_id not in (select user_id from root_user) limit #{page},#{listNumber}")
+    @Select("select * from user where account_id not in (select user_account from root_user) limit #{page},#{listNumber}")
     List<User> getAllUser(int page, int listNumber);
 
     /**

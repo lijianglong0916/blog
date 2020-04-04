@@ -25,8 +25,8 @@
                         <a th:href="@{queDetail(questionId=${question.getId()})}">
                             <h4 class="media-heading" th:text="${question.getTitle()}"></h4>
                         </a>
-                        <input hidden="hidden" id="questionId" th:value="${question.getId()}">
-                        <button th:text="删除" onclick="deleteReply()"></button>
+                        <button th:text="删除"
+                                th:onclick="'javascript:deleteReply(\''+${question.getId()}+'\');'"></button>
                         <span class="span-tags" th:text="'•作者：'+${question.getCreatorName()}"></span>
                         <span class="span-tags" th:text="'•回复数：'+${question.getComment_count()}">&nbsp;</span>
                         <span class="span-tags" th:text="'•阅读数：'+${question.getRead_count()}">&nbsp;</span>
@@ -78,14 +78,15 @@
             <!--user管理界面-->
             <div th:if="${userDto!=null}" class="col-lg-7 col-sm-12 col-md-12 col-xm-12 person-body">
                 <h2><span class="glyphicon glyphicon-list" aria-hidden="true"></span>用户管理</h2>
-                <div class="media" th:each="user:${userDto.getUsers()}">
+                <div class="media" th:if="${userDto.getUsers()!=null}" th:each="user:${userDto.getUsers()}">
 
                     <div class="media-body index-div-body">
                         <a th:href="@{personal(creatorName=${user.getName()})}">
                             <h4 class="media-heading" th:text="${user.getName()}"></h4>
                         </a>
-                        <input hidden="hidden" th:value="${user.getAccount_id()}" id="account_id">
-                        <button th:text="删除用户" onclick="deleteUser()"></button>
+                        <button th:text="删除用户"
+                                th:onclick="'javascript:deleteUser(\''+${user.getAccount_id()}+'\');'"></button>
+
                         <span class="span-tags" th:text="'•账号：'+${user.getAccount_id()}"></span>
                         <span class="span-tags" th:text="'•昵称：'+${user.getName()}"></span>
                         <span class="span-tags" th:text="'•密码：'+${user.getPassword()}"></span>

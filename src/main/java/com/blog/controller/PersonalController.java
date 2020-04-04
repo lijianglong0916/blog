@@ -33,6 +33,9 @@ public class PersonalController {
     @Autowired
     private UserMassageService userMassageService;
 
+    @Autowired
+    private RootUserService rootUserService;
+
     @GetMapping("myQuestion")
     public ModelAndView myQuestion(
             @RequestParam(name = "page", defaultValue = "1") int page,
@@ -67,11 +70,18 @@ public class PersonalController {
     public ModelAndView personal(@RequestParam(name = "creatorName", defaultValue = "") String creatorName, HttpSession session) {
         ModelAndView view = new ModelAndView();
         Long userAccount = 0L;
+        //当前被访问的用户是否是当前用户
         boolean isCurrentPerson = false;
+
+        //当前用户是否是root用户
+        boolean isRootUser = false;
+        //当前是否有用户登录
         if (session.getAttribute("userAccount") != null) {
             userAccount = (Long) session.getAttribute("userAccount");
+            //如果当前访问用户是当前登录用户
             if (creatorName.equals("") || userAccount.equals(userService.getUserByName(creatorName).getAccount_id())) {
                 isCurrentPerson = true;
+                isRootUser = rootUserService.isRootUser(userAccount);
             } else {
                 isCurrentPerson = false;
                 userAccount = userService.getUserByName(creatorName).getAccount_id();
@@ -87,6 +97,7 @@ public class PersonalController {
         view.addObject("isCurrentPerson", isCurrentPerson);
         view.addObject("headP", headP);
         view.addObject("userMessage", userMessage);
+        view.addObject("isRootUser", isRootUser);
         view.setViewName("personal");
         return view;
     }
