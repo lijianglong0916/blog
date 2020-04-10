@@ -7,6 +7,24 @@ a {
     cursor: pointer;
 }
 
+a:active {
+    text-decoration: none; /* 指正在点的链接*/
+}
+
+a:link {
+    text-decoration: none; /* 指正常的未被访问过的链接*/
+
+}
+
+a:visited {
+    text-decoration: none; /*指已经访问过的链接*/
+    color: blueviolet;
+}
+
+a:hover {
+    text-decoration: none; /*指鼠标在链接*/
+}
+
 .header-a-changePass {
     margin-left: 73%;
 }
@@ -23,6 +41,29 @@ textarea {
 button :focus {
     background-color: #e0e0e0;
     background-position: 0 -15px;
+}
+
+.footer-class {
+    background-color: lavender;
+    margin-top: -1%;
+    height: 50px;
+}
+
+.footer-li {
+    font-size: 120%;
+}
+
+.footer-a-href {
+    margin-left: 10%;
+}
+
+.foot-li-text {
+    margin-left: 20%;
+}
+
+.footer-inner-div {
+
+    padding-top: 1%;
 }
 
 .h4-title {

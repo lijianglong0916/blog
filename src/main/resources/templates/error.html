@@ -1,10 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <script src="jquery-3.4.1/jquery-3.4.1.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.css">
+    <link rel="stylesheet" href="css/community.css">
+    <script src="js/bootstrap.js" type="application/javascript"></script>
+    <script src="js/commmentJs.js"></script>
     <title>服务器冒烟了！</title>
 </head>
 <body>
+<div id="head" th:insert="header :: common_head"></div>
 <h1>服务器冒烟了！</h1>
+<div id="footer" th:insert="footer :: common_foot"></div>
 </body>
 </html>
