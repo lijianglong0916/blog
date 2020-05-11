@@ -143,6 +143,11 @@ public interface QuestionMapper {
     @Select("select like_count from question where id=#{id}")
     int getLikeCount(int id);
 
+    /**
+     * 根据id删除question
+     *
+     * @param id
+     */
     @Delete("delete from question where id=#{id}")
     void deleteById(int id);
 }

@@ -164,16 +164,19 @@ public class QuestionController {
      * @param model
      * @return
      */
-    @Transactional
     @PostMapping("deleteQuestion")
     @ResponseBody
+    @Transactional
     public String deleteQuestion(@RequestBody QuestionDto questionDto, Model model) {
         if (!BlogUtils.isObjectNull(questionDto.getId())) {
             //获取该question下的所有comment并删除
             List<Comment> comments = commentService.selectCommentByQuestionId(questionDto.getId());
-            for (Comment comment : comments) {
-                commentService.deleteComment(comment.getId());
+            if (comments.size() > 0) {
+                for (Comment comment : comments) {
+                    commentService.deleteComment(comment.getId());
+                }
             }
+
             //删除question
             questionService.deleteQueById(questionDto.getId());
             //移除所有赞信息

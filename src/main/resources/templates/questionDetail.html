@@ -5,7 +5,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>种花家的兔子</title>
+    <title>码酱论坛</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/bootstrap-theme.css">
     <link rel="stylesheet" href="css/community.css">
@@ -73,8 +73,7 @@
             <a onclick="commentReply()">
                 <span class="glyphicon glyphicon-comment log-color" aria-hidden="true">回复</span>
             </a>
-            <a onclick="deleteReply()"
-               th:if="${currentUserName!=null&&creatorName==currentUserName}">
+            <a onclick="deleteQue()" th:if="${currentUserName!=null&&creatorName==currentUserName}">
                 <span class="glyphicon glyphicon-trash log-color" aria-hidden="true">删除</span>
             </a>
             <hr>

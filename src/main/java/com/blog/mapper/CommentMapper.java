@@ -15,7 +15,7 @@ public interface CommentMapper {
      *
      * @param comment
      */
-    @Insert("insert into comment (commentText,creatorId,question_id,comment_create,comment_count,sub_count)values(#{commentText},#{creatorId},#{question_id},#{comment_create},#{comment_count},#{sub_count})")
+    @Insert("insert into comment (commentText,creatorId,question_id,comment_create)values(#{commentText},#{creatorId},#{question_id},#{comment_create})")
     public void insertComment(Comment comment);
 
     /**

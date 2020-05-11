@@ -57,9 +57,10 @@ public class PublishController {
                 question.setGmt_modified(question.getGmt_create());
                 try {
                     questionService.insertQuestion(question);
+                    return new Result(100, "发布成功", null);
                 } catch (Exception e) {
                     e.printStackTrace();
-                    return new Result(100, "数据库插入操作失败", null);
+                    return new Result(100, "系统故障，发布失败", null);
 
                 }
             } else {
@@ -68,9 +69,10 @@ public class PublishController {
                 question.setTag(questionDto.getTag());
                 try {
                     questionService.updateQuestion(question);
+                    return new Result(100, "修改成功", null);
                 } catch (Exception e) {
                     e.printStackTrace();
-                    return new Result(100, "数据库更新操作失败", null);
+                    return new Result(100, "系统故障，发布失败", null);
                 }
 
             }

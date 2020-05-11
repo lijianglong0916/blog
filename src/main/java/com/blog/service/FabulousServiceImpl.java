@@ -89,8 +89,10 @@ public class FabulousServiceImpl implements FabulousService {
     @Override
     public void removeFabulous(int question_id) {
         List<Fabulous> fabulous = fabulousMapper.getFabulousByQue(question_id);
-        for (Fabulous fabulous1 : fabulous) {
-            fabulousMapper.removeFabulous(fabulous1.getId());
+        if (fabulous != null) {
+            for (Fabulous fabulous1 : fabulous) {
+                fabulousMapper.removeFabulous(fabulous1.getId());
+            }
         }
 
     }
