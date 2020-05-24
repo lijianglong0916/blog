@@ -64,13 +64,13 @@
                                         <div class="modal-body">
                                             <h4 class="modal-title" align="center">用户登录</h4>
                                             <br/>
-                                            <form class="form-horizontal" action="login" role="form" method="post">
+                                            <form class="form-horizontal" role="form">
                                                 <div class="form-group">
-                                                    <label for="accountId"
+                                                    <label for="account_id"
                                                            class="col-sm-offset-2 col-sm-2 control-label">账号</label>
                                                     <div class="col-sm-5">
-                                                        <input type="text" class="form-control" name="accountId"
-                                                               id="accountId" placeholder="请输您的入账号">
+                                                        <input type="text" class="form-control" name="account_id"
+                                                               id="account_id" placeholder="请输入您的账号">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -83,10 +83,10 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-offset-4 col-sm-5">
-                                                        <button id="submitBtn" type="submit"
-                                                                class="btn btn-default btn-block btn-primary">登录
+                                                        <button class="btn btn-default btn-block btn-primary"
+                                                                type="button" onclick="userLogin()">登录
                                                         </button>
-                                                        <a id="changePass" onclick="missPass()"
+                                                        <a id="changePass" data-dismiss="myModal" onclick="missPass()"
                                                            class="header-a-changePass">忘记密码</a>
                                                     </div>
                                                 </div>
@@ -132,7 +132,7 @@
                                                            class="col-sm-offset-2 col-sm-2 control-label">账号</label>
                                                     <div class="col-sm-5">
                                                         <input type="text" class="form-control" name="registerAccount"
-                                                               id="registerAccount" placeholder="请输您的入账号">
+                                                               id="registerAccount" placeholder="请输入您的账号">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -140,7 +140,7 @@
                                                            class="col-sm-offset-2 col-sm-2 control-label">昵称</label>
                                                     <div class="col-sm-5">
                                                         <input type="text" class="form-control" name="registerName"
-                                                               id="registerName" placeholder="请输您的入昵称">
+                                                               id="registerName" placeholder="请输入您的昵称">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -201,7 +201,7 @@
                                                            class="col-sm-offset-2 col-sm-2 control-label">账号</label>
                                                     <div class="col-sm-5">
                                                         <input type="text" class="form-control" name="registerAccount"
-                                                               id="changePassAccount" placeholder="请输您的入账号">
+                                                               id="changePassAccount" placeholder="请输入您的账号">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -209,7 +209,7 @@
                                                            class="col-sm-offset-2 col-sm-2 control-label">昵称</label>
                                                     <div class="col-sm-5">
                                                         <input type="text" class="form-control" name="registerName"
-                                                               id="changePassName" placeholder="请输您的入昵称">
+                                                               id="changePassName" placeholder="请输入您的昵称">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">

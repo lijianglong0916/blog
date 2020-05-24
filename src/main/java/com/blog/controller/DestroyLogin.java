@@ -39,6 +39,6 @@ public class DestroyLogin {
         }
         model.addAttribute("hotQuestions", hotQuestions);
         model.addAttribute("listQuestionDto", listQuestionDto);
-        return "index";
+        return "redirect:/";
     }
 }

@@ -372,8 +372,11 @@ function inputSearch() {
     $("#messageForm").submit();
 }
 
+/**
+ * 找回密码
+ */
 function missPass() {
-    $('#myModal').attr("style", "display:none");
+    // $('#myModal').attr("style", "display:none");
     $('#changePassModal').modal('show') //显示模态框
 
 }
@@ -412,4 +415,34 @@ function changePassSubmit() {
 
     });
 
+}
+
+/**
+ * 用户登录
+ */
+function userLogin() {
+    var account_id = $("#account_id").val();
+    var password = $("#password").val();
+    if (account_id == "") {
+        alert("用户名不能为空！");
+        return;
+    }
+    if (password == "") {
+        alert("密码不能为空！");
+        return;
+    }
+
+    $.ajax({
+
+        type: "POST",
+        url: "login",
+        contentType: 'application/json',
+        data: JSON.stringify({"account_id": account_id, "password": password}),
+        success: function (response) {
+            alert(response['msg']);
+            // $('#changePassModal').attr("style", "display:none");
+            location.reload();
+        }
+
+    });
 }
