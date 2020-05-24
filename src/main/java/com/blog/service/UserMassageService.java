@@ -31,4 +31,11 @@ public interface UserMassageService {
      */
     void updateUM(UserMessage userMessage);
 
+    /**
+     * 根据用户账号删除用户基础信息
+     *
+     * @param userAccount
+     */
+    void deleteUmByUserAccount(Long userAccount);
+
 }

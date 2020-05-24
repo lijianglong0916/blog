@@ -4,10 +4,7 @@ package com.blog.mapper;/*
  */
 
 import com.blog.entity.UserMessage;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 @Mapper
 public interface UserMassageMapper {
@@ -39,4 +36,11 @@ public interface UserMassageMapper {
             "introduction=#{introduction} where user_account=#{user_account}")
     void updateUserMessage(UserMessage userMessage);
 
+    /**
+     * 根据用户账号删除用户基础信息
+     *
+     * @param user_account
+     */
+    @Delete("delete from user_message where user_account=#{user_account}")
+    void deleteUmByUserAccount(Long user_account);
 }

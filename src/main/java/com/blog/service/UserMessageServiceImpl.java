@@ -29,4 +29,9 @@ public class UserMessageServiceImpl implements UserMassageService {
     public void updateUM(UserMessage userMessage) {
         userMassageMapper.updateUserMessage(userMessage);
     }
+
+    @Override
+    public void deleteUmByUserAccount(Long userAccount) {
+        userMassageMapper.deleteUmByUserAccount(userAccount);
+    }
 }

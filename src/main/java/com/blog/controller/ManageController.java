@@ -30,13 +30,16 @@ public class ManageController {
     private QuestionService questionService;
 
     @Autowired
-    private CommentService commentService ;
+    private CommentService commentService;
 
     @Autowired
     private FabulousService fabulousService;
 
     @Autowired
-    private HeadPictureService headPictureService ;
+    private HeadPictureService headPictureService;
+
+    @Autowired
+    private UserMassageService userMassageService;
 
     @GetMapping("manage")
     public String manage(Model model,
@@ -84,17 +87,18 @@ public class ManageController {
                         commentService.deleteComment(comment.getId());
                     }
                     fabulousService.removeFabulous(question.getId());
-                } catch (Exception e) {
+                } catch (RuntimeException e) {
                     e.printStackTrace();
-                    return new Result(100,"数据库操作失败",null);
+                    return new Result(100, "数据库操作失败", null);
                 }
             }
             try {
                 headPictureService.deleteHP(user.getAccount_id());
+                userMassageService.deleteUmByUserAccount(user.getAccount_id());
                 userService.deleteUser(user.getAccount_id());
-            } catch (Exception e) {
+            } catch (RuntimeException e) {
                 e.printStackTrace();
-                return new Result(100,"删除用户数据库操作失败",null);
+                return new Result(100, "删除用户数据库操作失败", null);
             }
         }
         return new Result(100,"删除成功",null);
