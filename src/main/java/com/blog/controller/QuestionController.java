@@ -121,7 +121,7 @@ public class QuestionController {
             List<Question> hotQuestions = getLikeQues();
             view.addObject("hotQuestions", hotQuestions);
             view.addObject("listQuestionDto", listQuestionDto);
-            view.setViewName("index");
+            view.setViewName("redirect:/");
         }
         return view;
     }
