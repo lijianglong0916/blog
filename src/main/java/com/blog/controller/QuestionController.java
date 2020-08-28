@@ -129,27 +129,27 @@ public class QuestionController {
     /**
      * 全局查询显示
      *
-     * @param message
+     * @param searchQuestion
      * @param page
      * @param listNumber
      * @return
      */
-    @PostMapping("inputSearch")
-    public ModelAndView inputSearch(String message,
+    @GetMapping("inputSearch")
+    public ModelAndView inputSearch(@RequestParam(name = "searchQuestion") String searchQuestion,
                                     @RequestParam(name = "page", defaultValue = "1") int page,
                                     @RequestParam(name = "listNumber", defaultValue = "8") int listNumber) {
         ModelAndView view = new ModelAndView("search");
         ListQuestionDto questions = null;
         try {
             //查询到的问题
-            questions = questionService.getQuestionsByMsg(message, page, listNumber);
+            questions = questionService.getQuestionsByMsg(searchQuestion, page, listNumber);
             //获取热门问题
             List<Question> hotQuestions = getLikeQues();
             view.addObject("hotQuestions", hotQuestions);
             view.addObject("questions", questions);
             view.addObject("msg", "查询成功");
             return view;
-        } catch (Exception e) {
+        } catch (RuntimeException e) {
             e.printStackTrace();
             view.addObject("msg", "数据库操作失败");
             return view;

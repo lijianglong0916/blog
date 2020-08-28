@@ -73,7 +73,8 @@
             <a onclick="commentReply()">
                 <span class="glyphicon glyphicon-comment log-color" aria-hidden="true">回复</span>
             </a>
-            <a onclick="deleteQue()" th:if="${currentUserName!=null&&creatorName==currentUserName}">
+            <a th:onclick="'javascript:deleteQue(\''+${question.getId()}+'\');'"
+               th:if="${currentUserName!=null&&creatorName==currentUserName}">
                 <span class="glyphicon glyphicon-trash log-color" aria-hidden="true">删除</span>
             </a>
             <hr>

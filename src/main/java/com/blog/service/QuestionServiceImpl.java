@@ -127,7 +127,7 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     public ListQuestionDto getQuestionsByMsg(String message, int page, int listNumber) {
         //获取所有用户的提问总数,按分页值查取分页展示的数据
-        List<Question> questionList = questionMapper.getQueByMsg(message, page, listNumber);
+        List<Question> questionList = questionMapper.getQueByMsg("%" + message + "%", page, listNumber);
         int totalCountQuestion = questionList.size();
         ListQuestionDto listQuestion = new ListQuestionDto();
         //设置分页

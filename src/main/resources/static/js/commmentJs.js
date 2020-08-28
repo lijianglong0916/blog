@@ -33,8 +33,8 @@ function replyPost() {
 /**
  * 删除问题
  */
-function deleteQue() {
-    var questionId = $("#questionId").val();
+function deleteQue(questionId) {
+    var questionId = questionId;
     $.ajax({
         type: "post",
         url: "deleteQuestion",

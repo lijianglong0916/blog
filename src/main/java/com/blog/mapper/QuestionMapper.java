@@ -25,7 +25,7 @@ public interface QuestionMapper {
      * @param message
      * @return
      */
-    @Select("select * from question where title like '%${message}%' or description like '%${message}%' order by gmt_create desc limit  #{page},#{listNumber} ")
+    @Select("select * from question where title like #{message} or description like #{message} order by gmt_create desc limit  #{page},#{listNumber} ")
     public List<Question> getQueByMsg(String message, int page, int listNumber);
 
     /**

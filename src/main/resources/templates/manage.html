@@ -26,7 +26,7 @@
                             <h4 class="media-heading" th:text="${question.getTitle()}"></h4>
                         </a>
                         <button th:text="删除"
-                                th:onclick="'javascript:deleteReply(\''+${question.getId()}+'\');'"></button>
+                                th:onclick="'javascript:deleteQue(\''+${question.getId()}+'\');'"></button>
                         <span class="span-tags" th:text="'•作者：'+${question.getCreatorName()}"></span>
                         <span class="span-tags" th:text="'•回复数：'+${question.getComment_count()}">&nbsp;</span>
                         <span class="span-tags" th:text="'•阅读数：'+${question.getRead_count()}">&nbsp;</span>
