@@ -122,15 +122,6 @@
             </plugin>
 
             <plugin>
-                <!--整合mysql和flyway-->
-                <groupId>org.flywaydb</groupId>
-                <artifactId>flyway-maven-plugin</artifactId>
-                <version>5.2.4</version>
-                <configuration>
-                    <url>jdbc:mysql://106.54.82.18:3306/db01?characterEncoding=utf-8</url>
-                    <user>test</user>
-                    <password>abc123</password>
-                </configuration>
                 <dependencies>
                     <dependency>
                         <groupId>mysql</groupId>
